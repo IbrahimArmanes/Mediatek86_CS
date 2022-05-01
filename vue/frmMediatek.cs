@@ -1278,5 +1278,215 @@ namespace Mediatek86.vue
 
         #endregion
 
+        #region Gestion des commandes
+        //-----------------------------------------------------------------------
+        // ONGLET "Gestion des commandes" 
+        //-------------------------------------------------------------------------
+
+        //------------------- Fonctions utiles
+        
+
+        //-------------------
+
+        //Gestion des commandes de documents
+        //--------------------------------------------
+        private void AfficheCommandeDocInfos(LivreDvd livreDvd)
+        {
+            // informations sur la revue
+            txbCommandeDocTitre.Text = livreDvd.Titre;
+            txbCommandeDocAuteurRealisateur.Text = livreDvd.getCreateur();
+            txbCommandeDocNumero.Text = livreDvd.Id;
+            txbCommandeDocGenre.Text = livreDvd.Genre;
+            txbCommandeDocPublic.Text = livreDvd.Public;
+            txbCommandeDocRayon.Text = livreDvd.Rayon;
+        }
+
+        /// <summary>
+        /// Vide les zones d'affchage des informations de la revue
+        /// </summary>
+        private void VideCommandeDocInfos()
+        {
+            txbCommandeDocTitre.Text = "";
+            txbCommandeDocAuteurRealisateur.Text = "";
+            txbCommandeDocNumero.Text = "";
+            txbCommandeDocGenre.Text = "";
+            txbCommandeDocPublic.Text = "";
+            txbCommandeDocRayon.Text = "";
+        }
+
+        /// <summary>
+        /// Recherche d'un numéro de document et affiche ses informations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRechercherDoc_Click(object sender, EventArgs e)
+        {
+            if (!txbCommandeDocNumero.Text.Equals(""))
+            {
+                LivreDvd Dvds = lesDvd.Find(x => x.Id.Equals(txbCommandeDocNumero.Text));
+                LivreDvd Livres = lesLivres.Find(x => x.Id.Equals(txbCommandeDocNumero.Text));
+                if (Dvds != null)
+                {
+                    AfficheCommandeDocInfos(Dvds);
+                }
+                else if (Livres != null)
+                {
+                    AfficheCommandeDocInfos(Livres);
+                }
+                else
+                {
+                    MessageBox.Show("numéro introuvable");
+                    VideCommandeDocInfos();
+                }
+            }
+            else
+            {
+                VideCommandeDocInfos();
+            }
+
+        }
+        private void DocExemplaire_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void DocPrixUnit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                    (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+            
+        }
+
+        private void calculPrixTotal()
+        {
+            try
+            {
+                double prixUnit = Convert.ToDouble(DocPrixUnit.Text);
+                int nbreExemplaires = int.Parse(DocNbreExemplaire.Text);
+                DocPrixTotal.Text = (nbreExemplaires * prixUnit).ToString();
+            }
+            catch (Exception e) {
+                DocPrixTotal.Text = "Error";
+            }
+
+            
+        }
+
+        private void DocPrixCalcul(object sender, EventArgs e)
+        {
+            calculPrixTotal();
+        }
+        private void BtnDocCommander_Click(object sender, EventArgs e)
+        {
+            calculPrixTotal();
+            if (txbCommandeDocNumero.Text == "" || DocNbreExemplaire.Text == "" || DocPrixUnit.Text == "" )
+            {
+                MessageBox.Show("Veuillez remplir tous les champs", "Attention" ,MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                string titre = txbCommandeDocTitre.Text;
+                string nbreEx = DocNbreExemplaire.Text.ToString();
+                string prix = DocPrixTotal.Text.ToString();
+                DialogResult dialogResult = MessageBox.Show("Êtes-vous sûr de vouloir commander : \n" +
+                    nbreEx +
+                    " exemplaires de l'oeuvre " +
+                    titre +
+                    "\nPrix total : " +
+                    prix +
+                    "€", "Confirmer la commande", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //do something
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+        }
+
+            
+
+
+
+        //Gestion des commandes de revues
+        //--------------------------------------------
+        private void AfficheCommandeRevueInfos(Revue revue)
+        {
+            // informations sur la revue
+            txbCommandeRevueTitre.Text = revue.Titre;
+            txbCommandeRevuePeriodicite.Text = revue.Periodicite;
+            txbCommandeRevueNumero.Text = revue.Id;
+            txbCommandeRevueGenre.Text = revue.Genre;
+            txbCommandeRevuePublic.Text = revue.Public;
+            txbCommandeRevueRayon.Text = revue.Rayon;
+        }
+
+        /// <summary>
+        /// Vide les zones d'affchage des informations de la revue
+        /// </summary>
+        private void VideCommandeRevueInfos()
+        {
+            txbCommandeRevueTitre.Text = "";
+            txbCommandeRevuePeriodicite.Text = "";
+            txbCommandeRevueNumero.Text = "";
+            txbCommandeRevueGenre.Text = "";
+            txbCommandeRevuePublic.Text = "";
+            txbCommandeRevueRayon.Text = "";
+        }
+
+        /// <summary>
+        /// Recherche d'un numéro de revue et affiche ses informations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRechercherRevue_Click(object sender, EventArgs e)
+        {
+            if (!txbCommandeRevueNumero.Text.Equals(""))
+            {
+                Revue revue = lesRevues.Find(x => x.Id.Equals(txbCommandeRevueNumero.Text));
+                if (revue != null)
+                {
+                    AfficheCommandeRevueInfos(revue);
+                }
+                else
+                {
+                    MessageBox.Show("numéro introuvable");
+                    VideCommandeRevueInfos();
+                }
+            }
+            else
+            {
+                VideCommandeRevueInfos();
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+        #endregion
+
+        
     }
 }

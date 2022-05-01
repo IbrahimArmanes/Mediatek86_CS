@@ -15,6 +15,7 @@ namespace Mediatek86.metier
         {
         }
 
+        public abstract String getCreateur();
     }
 }
 
