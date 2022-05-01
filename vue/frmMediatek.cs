@@ -1402,11 +1402,11 @@ namespace Mediatek86.vue
                 string titre = txbCommandeDocTitre.Text;
                 string nbreEx = DocNbreExemplaire.Text.ToString();
                 string prix = DocPrixTotal.Text.ToString();
-                DialogResult dialogResult = MessageBox.Show("Êtes-vous sûr de vouloir commander : \n" +
+                DialogResult dialogResult = MessageBox.Show("Êtes-vous sûr de vouloir commander : \n \n" +
                     nbreEx +
                     " exemplaires de l'oeuvre " +
                     titre +
-                    "\nPrix total : " +
+                    "\n \nPrix total : " +
                     prix +
                     "€", "Confirmer la commande", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
