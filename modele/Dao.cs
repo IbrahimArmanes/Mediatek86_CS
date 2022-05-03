@@ -15,6 +15,68 @@ namespace Mediatek86.modele
         private static readonly string database = "mediatek86";
         private static readonly string connectionString = "server="+server+";user id="+userid+";password="+password+";database="+database+";SslMode=none";
 
+
+        /// <summary>
+        /// Retourne toutes les commandes de livres/DVD à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets commande</returns>
+        public static List<CommandeLivreDvd> GetAllCommandesLivreDvd()
+        {
+            List<CommandeLivreDvd> lesCommandes = new List<CommandeLivreDvd>();
+            string req = "Select * from CommandeDocument order by idLivreDvd";
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+
+            while (curs.Read())
+            {
+                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"),(string)curs.Field("idLivreDvd") ,(string)curs.Field("id"), (double)curs.Field("montant"), (int)curs.Field("idStade"));
+                lesCommandes.Add(commande);
+            }
+            curs.Close();
+            return lesCommandes;
+        }
+
+        /// <summary>
+        /// Ajoute une commande à la table commandedocument et commande 
+        /// </summary>
+        /// <returns>true si l'insertion a pu se faire</returns>
+        public static bool CreerCommandeLivreDvd(CommandeLivreDvd commande)
+        {
+            try
+            {
+                string req2 = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)";
+                Dictionary<string, object> parameters2 = new Dictionary<string, object>
+                {
+                    { "@nbExemplaire", commande.NbExemplaire},
+                    { "@idLivreDvd", commande.IdLivreDvd }
+                };
+                BddMySql curs2 = BddMySql.GetInstance(connectionString);
+                curs2.ReqUpdate(req2, parameters2);
+                curs2.Close();
+
+                string req = "update commande SET montant = @montant WHERE id = @id";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@montant", commande.Montant },
+                    { "@id", commande.Id }
+                };
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqUpdate(req, parameters);
+                curs.Close();
+
+                
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
         /// <summary>
         /// Retourne tous les genres à partir de la BDD
         /// </summary>

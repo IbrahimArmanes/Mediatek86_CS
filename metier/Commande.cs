@@ -9,16 +9,15 @@ namespace Mediatek86.metier
     public class Commande
     {
         private readonly string id;
-        private readonly string dateCommande;
+        private readonly string dateCommande = null;
         private readonly double montant;
         private readonly int idStade;
 
-        public Commande(string id, string dateCommande, double montant, int idStade)
+        public Commande(string id, double montant, int idStade)
         {
-            this.id = id;   
-            this.dateCommande = dateCommande;
+            this.id = id;
             this.montant = montant;
-            this.idStade = idStade
+            this.idStade = idStade;
         }
 
         public string Id { get => id; }

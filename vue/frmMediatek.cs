@@ -1391,6 +1391,7 @@ namespace Mediatek86.vue
         }
         private void BtnDocCommander_Click(object sender, EventArgs e)
         {
+            btnRechercherDoc_Click(sender, e);
             calculPrixTotal();
             if (txbCommandeDocNumero.Text == "" || DocNbreExemplaire.Text == "" || DocPrixUnit.Text == "" )
             {
