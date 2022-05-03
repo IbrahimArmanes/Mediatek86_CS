@@ -102,7 +102,10 @@ namespace Mediatek86.controleur
         {
             return Dao.CreerExemplaire(exemplaire);
         }
-
+        public bool CreerCommandeLivreDvd(CommandeLivreDvd commande)
+        {
+            return Dao.CreerCommandeLivreDvd(commande);
+        }
     }
 
 }

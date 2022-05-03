@@ -224,6 +224,8 @@ namespace Mediatek86.vue
             this.label64 = new System.Windows.Forms.Label();
             this.btnRechercherRevue = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.DocNumCommande = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
             this.tabOngletsApplication.SuspendLayout();
             this.tabLivres.SuspendLayout();
             this.grpLivresInfos.SuspendLayout();
@@ -1824,6 +1826,8 @@ namespace Mediatek86.vue
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.DocNumCommande);
+            this.groupBox2.Controls.Add(this.label77);
             this.groupBox2.Controls.Add(this.label76);
             this.groupBox2.Controls.Add(this.DocCalculer);
             this.groupBox2.Controls.Add(this.label72);
@@ -2285,6 +2289,24 @@ namespace Mediatek86.vue
             this.tabPage1.Text = "Gestion des commandes";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // DocNumCommande
+            // 
+            this.DocNumCommande.Location = new System.Drawing.Point(210, 253);
+            this.DocNumCommande.MaxLength = 5;
+            this.DocNumCommande.Name = "DocNumCommande";
+            this.DocNumCommande.Size = new System.Drawing.Size(61, 20);
+            this.DocNumCommande.TabIndex = 65;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(6, 253);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(201, 13);
+            this.label77.TabIndex = 64;
+            this.label77.Text = "Donner un numéro de commande :";
+            // 
             // FrmMediatek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2530,6 +2552,8 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Button DocCalculer;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox DocNumCommande;
+        private System.Windows.Forms.Label label77;
     }
 }
 

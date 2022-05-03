@@ -1393,7 +1393,7 @@ namespace Mediatek86.vue
         {
             btnRechercherDoc_Click(sender, e);
             calculPrixTotal();
-            if (txbCommandeDocNumero.Text == "" || DocNbreExemplaire.Text == "" || DocPrixUnit.Text == "" )
+            if (txbCommandeDocNumero.Text == "" || DocNbreExemplaire.Text == "" || DocPrixUnit.Text == "" || DocNumCommande.Text == "")
             {
                 MessageBox.Show("Veuillez remplir tous les champs", "Attention" ,MessageBoxButtons.OK);
 
@@ -1403,16 +1403,22 @@ namespace Mediatek86.vue
                 string titre = txbCommandeDocTitre.Text;
                 string nbreEx = DocNbreExemplaire.Text.ToString();
                 string prix = DocPrixTotal.Text.ToString();
+                string num = DocNumCommande.Text;
                 DialogResult dialogResult = MessageBox.Show("Êtes-vous sûr de vouloir commander : \n \n" +
                     nbreEx +
                     " exemplaires de l'oeuvre " +
                     titre +
                     "\n \nPrix total : " +
                     prix +
-                    "€", "Confirmer la commande", MessageBoxButtons.YesNo);
+                    "€", "Confirmer la commande : "+num, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //do something
+                    int nbreExCommande = int.Parse(DocNbreExemplaire.Text);
+                    double montantCommande = double.Parse(DocPrixTotal.Text);
+                    string numSerie = txbCommandeDocNumero.Text;
+
+                    CommandeLivreDvd commande = new CommandeLivreDvd(nbreExCommande, numSerie, num, montantCommande);
+                    controle.CreerCommandeLivreDvd(commande);
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -1486,8 +1492,7 @@ namespace Mediatek86.vue
 
 
 
-        #endregion
 
-        
+        #endregion
     }
 }

@@ -30,7 +30,7 @@ namespace Mediatek86.modele
 
             while (curs.Read())
             {
-                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"),(string)curs.Field("idLivreDvd") ,(string)curs.Field("id"), (double)curs.Field("montant"), (int)curs.Field("idStade"));
+                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"),(string)curs.Field("idLivreDvd") ,(string)curs.Field("id"), (double)curs.Field("montant"));
                 lesCommandes.Add(commande);
             }
             curs.Close();
@@ -38,7 +38,7 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
-        /// Ajoute une commande à la table commandedocument et commande 
+        /// Ajoute une commande aux tables 'commandedocument' et 'commande'
         /// </summary>
         /// <returns>true si l'insertion a pu se faire</returns>
         public static bool CreerCommandeLivreDvd(CommandeLivreDvd commande)
@@ -48,6 +48,7 @@ namespace Mediatek86.modele
                 string req2 = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)";
                 Dictionary<string, object> parameters2 = new Dictionary<string, object>
                 {
+                    { "@id", commande.Id},
                     { "@nbExemplaire", commande.NbExemplaire},
                     { "@idLivreDvd", commande.IdLivreDvd }
                 };

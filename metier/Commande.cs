@@ -13,11 +13,10 @@ namespace Mediatek86.metier
         private readonly double montant;
         private readonly int idStade;
 
-        public Commande(string id, double montant, int idStade)
+        public Commande(string id, double montant)
         {
             this.id = id;
             this.montant = montant;
-            this.idStade = idStade;
         }
 
         public string Id { get => id; }
