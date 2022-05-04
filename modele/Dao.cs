@@ -30,7 +30,7 @@ namespace Mediatek86.modele
 
             while (curs.Read())
             {
-                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"),(string)curs.Field("idLivreDvd") ,(string)curs.Field("id"), (double)curs.Field("montant"));
+                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"), (string)curs.Field("idLivreDvd"), (string)curs.Field("id"), (double)curs.Field("montant"), (int)curs.Field("idStade") );
                 lesCommandes.Add(commande);
             }
             curs.Close();

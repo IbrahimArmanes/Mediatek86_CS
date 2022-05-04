@@ -179,6 +179,8 @@ namespace Mediatek86.vue
             this.btnReceptionRechercher = new System.Windows.Forms.Button();
             this.FaireCommande = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DocNumCommande = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.DocCalculer = new System.Windows.Forms.Button();
             this.label72 = new System.Windows.Forms.Label();
@@ -224,8 +226,20 @@ namespace Mediatek86.vue
             this.label64 = new System.Windows.Forms.Label();
             this.btnRechercherRevue = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.DocNumCommande = new System.Windows.Forms.TextBox();
-            this.label77 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabOngletsApplication.SuspendLayout();
             this.tabLivres.SuspendLayout();
             this.grpLivresInfos.SuspendLayout();
@@ -252,6 +266,9 @@ namespace Mediatek86.vue
             this.FaireCommande.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabOngletsApplication
@@ -1858,6 +1875,24 @@ namespace Mediatek86.vue
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commande d\'un livre/DVD";
             // 
+            // DocNumCommande
+            // 
+            this.DocNumCommande.Location = new System.Drawing.Point(210, 253);
+            this.DocNumCommande.MaxLength = 5;
+            this.DocNumCommande.Name = "DocNumCommande";
+            this.DocNumCommande.Size = new System.Drawing.Size(61, 20);
+            this.DocNumCommande.TabIndex = 65;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(6, 253);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(201, 13);
+            this.label77.TabIndex = 64;
+            this.label77.Text = "Donner un numéro de commande :";
+            // 
             // label76
             // 
             this.label76.AutoSize = true;
@@ -2281,6 +2316,7 @@ namespace Mediatek86.vue
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -2289,23 +2325,151 @@ namespace Mediatek86.vue
             this.tabPage1.Text = "Gestion des commandes";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // DocNumCommande
+            // dataGridView1
             // 
-            this.DocNumCommande.Location = new System.Drawing.Point(210, 253);
-            this.DocNumCommande.MaxLength = 5;
-            this.DocNumCommande.Name = "DocNumCommande";
-            this.DocNumCommande.Size = new System.Drawing.Size(61, 20);
-            this.DocNumCommande.TabIndex = 65;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(8, 19);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(844, 228);
+            this.dataGridView1.TabIndex = 5;
             // 
-            // label77
+            // groupBox3
             // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(6, 253);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(201, 13);
-            this.label77.TabIndex = 64;
-            this.label77.Text = "Donner un numéro de commande :";
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Controls.Add(this.label82);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.label81);
+            this.groupBox3.Controls.Add(this.label80);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.label79);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label78);
+            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Location = new System.Drawing.Point(9, 14);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(858, 352);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Gestion des livres et DVD";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(157, 253);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 26;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(13, 253);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(140, 13);
+            this.label78.TabIndex = 25;
+            this.label78.Text = "Numéro de commande :";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Location = new System.Drawing.Point(13, 298);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(61, 13);
+            this.label79.TabIndex = 27;
+            this.label79.Text = "Montant :";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(202, 304);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(13, 13);
+            this.label80.TabIndex = 65;
+            this.label80.Text = "€";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(157, 301);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(45, 20);
+            this.textBox3.TabIndex = 64;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(157, 276);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 67;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(13, 276);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(138, 13);
+            this.label81.TabIndex = 66;
+            this.label81.Text = "Date de la commande :";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(449, 256);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(68, 20);
+            this.textBox7.TabIndex = 69;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Location = new System.Drawing.Point(305, 256);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(144, 13);
+            this.label82.TabIndex = 68;
+            this.label82.Text = "Stade de la commande :";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(657, 252);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 70;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(657, 276);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 71;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(657, 301);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 72;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // FrmMediatek
             // 
@@ -2351,6 +2515,10 @@ namespace Mediatek86.vue
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2554,6 +2722,20 @@ namespace Mediatek86.vue
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox DocNumCommande;
         private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
     }
 }
 

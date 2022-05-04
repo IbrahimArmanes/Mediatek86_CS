@@ -1378,7 +1378,7 @@ namespace Mediatek86.vue
                 int nbreExemplaires = int.Parse(DocNbreExemplaire.Text);
                 DocPrixTotal.Text = (nbreExemplaires * prixUnit).ToString();
             }
-            catch (Exception e) {
+            catch {
                 DocPrixTotal.Text = "Error";
             }
 
