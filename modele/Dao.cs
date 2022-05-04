@@ -45,12 +45,13 @@ namespace Mediatek86.modele
         {
             try
             {
-                string req2 = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)";
+                string req2 = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd, @idStade)";
                 Dictionary<string, object> parameters2 = new Dictionary<string, object>
                 {
                     { "@id", commande.Id},
                     { "@nbExemplaire", commande.NbExemplaire},
-                    { "@idLivreDvd", commande.IdLivreDvd }
+                    { "@idLivreDvd", commande.IdLivreDvd },
+                    { "@idStade", 1 }
                 };
                 BddMySql curs2 = BddMySql.GetInstance(connectionString);
                 curs2.ReqUpdate(req2, parameters2);

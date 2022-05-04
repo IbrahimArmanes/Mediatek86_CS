@@ -11,7 +11,7 @@ namespace Mediatek86.metier
         private readonly string id;
         private readonly string dateCommande = null;
         private readonly double montant;
-        
+
         public Commande(string id, double montant)
         {
             this.id = id;
