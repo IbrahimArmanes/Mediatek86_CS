@@ -177,7 +177,7 @@ namespace Mediatek86.vue
             this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.btnReceptionRechercher = new System.Windows.Forms.Button();
-            this.FaireCommande = new System.Windows.Forms.TabPage();
+            this.tabCommande = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DocNumCommande = new System.Windows.Forms.TextBox();
             this.label77 = new System.Windows.Forms.Label();
@@ -225,21 +225,22 @@ namespace Mediatek86.vue
             this.label63 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.btnRechercherRevue = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabGestion = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label78 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label81 = new System.Windows.Forms.Label();
+            this.btnRelancé = new System.Windows.Forms.Button();
+            this.btnRéglée1 = new System.Windows.Forms.Button();
+            this.btnLivrée1 = new System.Windows.Forms.Button();
+            this.btnAnnulé1 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label82 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.dgvCommandeDocListe = new System.Windows.Forms.DataGridView();
             this.tabOngletsApplication.SuspendLayout();
             this.tabLivres.SuspendLayout();
             this.grpLivresInfos.SuspendLayout();
@@ -263,12 +264,12 @@ namespace Mediatek86.vue
             ((System.ComponentModel.ISupportInitialize)(this.pcbReceptionExemplaireRevueImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceptionExemplairesListe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbReceptionRevueImage)).BeginInit();
-            this.FaireCommande.SuspendLayout();
+            this.tabCommande.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabGestion.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCommandeDocListe)).BeginInit();
             this.SuspendLayout();
             // 
             // tabOngletsApplication
@@ -277,8 +278,8 @@ namespace Mediatek86.vue
             this.tabOngletsApplication.Controls.Add(this.tabDvd);
             this.tabOngletsApplication.Controls.Add(this.tabRevues);
             this.tabOngletsApplication.Controls.Add(this.tabReceptionRevue);
-            this.tabOngletsApplication.Controls.Add(this.FaireCommande);
-            this.tabOngletsApplication.Controls.Add(this.tabPage1);
+            this.tabOngletsApplication.Controls.Add(this.tabCommande);
+            this.tabOngletsApplication.Controls.Add(this.tabGestion);
             this.tabOngletsApplication.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabOngletsApplication.ItemSize = new System.Drawing.Size(49, 18);
             this.tabOngletsApplication.Location = new System.Drawing.Point(0, 0);
@@ -1829,17 +1830,18 @@ namespace Mediatek86.vue
             this.btnReceptionRechercher.UseVisualStyleBackColor = true;
             this.btnReceptionRechercher.Click += new System.EventHandler(this.btnReceptionRechercher_Click);
             // 
-            // FaireCommande
+            // tabCommande
             // 
-            this.FaireCommande.Controls.Add(this.groupBox2);
-            this.FaireCommande.Controls.Add(this.groupBox1);
-            this.FaireCommande.Location = new System.Drawing.Point(4, 22);
-            this.FaireCommande.Name = "FaireCommande";
-            this.FaireCommande.Padding = new System.Windows.Forms.Padding(3);
-            this.FaireCommande.Size = new System.Drawing.Size(875, 633);
-            this.FaireCommande.TabIndex = 5;
-            this.FaireCommande.Text = "Nouvelle commande";
-            this.FaireCommande.UseVisualStyleBackColor = true;
+            this.tabCommande.Controls.Add(this.groupBox2);
+            this.tabCommande.Controls.Add(this.groupBox1);
+            this.tabCommande.Location = new System.Drawing.Point(4, 22);
+            this.tabCommande.Name = "tabCommande";
+            this.tabCommande.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCommande.Size = new System.Drawing.Size(875, 633);
+            this.tabCommande.TabIndex = 5;
+            this.tabCommande.Text = "Nouvelle commande";
+            this.tabCommande.UseVisualStyleBackColor = true;
+            this.tabCommande.Enter += new System.EventHandler(this.tabCommande_Enter);
             // 
             // groupBox2
             // 
@@ -2314,38 +2316,24 @@ namespace Mediatek86.vue
             this.btnRechercherRevue.UseVisualStyleBackColor = true;
             this.btnRechercherRevue.Click += new System.EventHandler(this.btnRechercherRevue_Click);
             // 
-            // tabPage1
+            // tabGestion
             // 
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(875, 633);
-            this.tabPage1.TabIndex = 6;
-            this.tabPage1.Text = "Gestion des commandes";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 19);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(844, 228);
-            this.dataGridView1.TabIndex = 5;
+            this.tabGestion.Controls.Add(this.groupBox3);
+            this.tabGestion.Location = new System.Drawing.Point(4, 22);
+            this.tabGestion.Name = "tabGestion";
+            this.tabGestion.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGestion.Size = new System.Drawing.Size(875, 633);
+            this.tabGestion.TabIndex = 6;
+            this.tabGestion.Text = "Gestion des commandes";
+            this.tabGestion.UseVisualStyleBackColor = true;
+            this.tabGestion.Enter += new System.EventHandler(this.tabGestion_Enter);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btnRelancé);
+            this.groupBox3.Controls.Add(this.btnRéglée1);
+            this.groupBox3.Controls.Add(this.btnLivrée1);
+            this.groupBox3.Controls.Add(this.btnAnnulé1);
             this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.label82);
             this.groupBox3.Controls.Add(this.textBox2);
@@ -2355,7 +2343,7 @@ namespace Mediatek86.vue
             this.groupBox3.Controls.Add(this.label79);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label78);
-            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Controls.Add(this.dgvCommandeDocListe);
             this.groupBox3.Location = new System.Drawing.Point(9, 14);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(858, 352);
@@ -2363,68 +2351,42 @@ namespace Mediatek86.vue
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Gestion des livres et DVD";
             // 
-            // textBox1
+            // btnRelancé
             // 
-            this.textBox1.Location = new System.Drawing.Point(157, 253);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 26;
+            this.btnRelancé.BackColor = System.Drawing.Color.White;
+            this.btnRelancé.Location = new System.Drawing.Point(576, 251);
+            this.btnRelancé.Name = "btnRelancé";
+            this.btnRelancé.Size = new System.Drawing.Size(126, 23);
+            this.btnRelancé.TabIndex = 73;
+            this.btnRelancé.Text = "Relancer la commande";
+            this.btnRelancé.UseVisualStyleBackColor = false;
             // 
-            // label78
+            // btnRéglée1
             // 
-            this.label78.AutoSize = true;
-            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(13, 253);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(140, 13);
-            this.label78.TabIndex = 25;
-            this.label78.Text = "Numéro de commande :";
+            this.btnRéglée1.Location = new System.Drawing.Point(708, 300);
+            this.btnRéglée1.Name = "btnRéglée1";
+            this.btnRéglée1.Size = new System.Drawing.Size(126, 23);
+            this.btnRéglée1.TabIndex = 72;
+            this.btnRéglée1.Text = "Commande réglée";
+            this.btnRéglée1.UseVisualStyleBackColor = true;
             // 
-            // label79
+            // btnLivrée1
             // 
-            this.label79.AutoSize = true;
-            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label79.Location = new System.Drawing.Point(13, 298);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(61, 13);
-            this.label79.TabIndex = 27;
-            this.label79.Text = "Montant :";
+            this.btnLivrée1.Location = new System.Drawing.Point(708, 275);
+            this.btnLivrée1.Name = "btnLivrée1";
+            this.btnLivrée1.Size = new System.Drawing.Size(126, 23);
+            this.btnLivrée1.TabIndex = 71;
+            this.btnLivrée1.Text = "Commande livrée";
+            this.btnLivrée1.UseVisualStyleBackColor = true;
             // 
-            // label80
+            // btnAnnulé1
             // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(202, 304);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(13, 13);
-            this.label80.TabIndex = 65;
-            this.label80.Text = "€";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(157, 301);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(45, 20);
-            this.textBox3.TabIndex = 64;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(157, 276);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 67;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label81.Location = new System.Drawing.Point(13, 276);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(138, 13);
-            this.label81.TabIndex = 66;
-            this.label81.Text = "Date de la commande :";
+            this.btnAnnulé1.Location = new System.Drawing.Point(708, 251);
+            this.btnAnnulé1.Name = "btnAnnulé1";
+            this.btnAnnulé1.Size = new System.Drawing.Size(126, 23);
+            this.btnAnnulé1.TabIndex = 70;
+            this.btnAnnulé1.Text = "Annuler la commande";
+            this.btnAnnulé1.UseVisualStyleBackColor = true;
             // 
             // textBox7
             // 
@@ -2444,32 +2406,84 @@ namespace Mediatek86.vue
             this.label82.TabIndex = 68;
             this.label82.Text = "Stade de la commande :";
             // 
-            // button2
+            // textBox2
             // 
-            this.button2.Location = new System.Drawing.Point(657, 252);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 70;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.textBox2.Location = new System.Drawing.Point(157, 276);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 67;
             // 
-            // button4
+            // label81
             // 
-            this.button4.Location = new System.Drawing.Point(657, 276);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 71;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(13, 276);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(138, 13);
+            this.label81.TabIndex = 66;
+            this.label81.Text = "Date de la commande :";
             // 
-            // button5
+            // label80
             // 
-            this.button5.Location = new System.Drawing.Point(657, 301);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 72;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(202, 304);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(13, 13);
+            this.label80.TabIndex = 65;
+            this.label80.Text = "€";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(157, 301);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(45, 20);
+            this.textBox3.TabIndex = 64;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Location = new System.Drawing.Point(13, 298);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(61, 13);
+            this.label79.TabIndex = 27;
+            this.label79.Text = "Montant :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(157, 253);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 26;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(13, 253);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(140, 13);
+            this.label78.TabIndex = 25;
+            this.label78.Text = "Numéro de commande :";
+            // 
+            // dgvCommandeDocListe
+            // 
+            this.dgvCommandeDocListe.AllowUserToAddRows = false;
+            this.dgvCommandeDocListe.AllowUserToDeleteRows = false;
+            this.dgvCommandeDocListe.AllowUserToResizeColumns = false;
+            this.dgvCommandeDocListe.AllowUserToResizeRows = false;
+            this.dgvCommandeDocListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCommandeDocListe.Location = new System.Drawing.Point(8, 19);
+            this.dgvCommandeDocListe.MultiSelect = false;
+            this.dgvCommandeDocListe.Name = "dgvCommandeDocListe";
+            this.dgvCommandeDocListe.ReadOnly = true;
+            this.dgvCommandeDocListe.RowHeadersVisible = false;
+            this.dgvCommandeDocListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCommandeDocListe.Size = new System.Drawing.Size(844, 228);
+            this.dgvCommandeDocListe.TabIndex = 5;
             // 
             // FrmMediatek
             // 
@@ -2510,15 +2524,15 @@ namespace Mediatek86.vue
             ((System.ComponentModel.ISupportInitialize)(this.pcbReceptionExemplaireRevueImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceptionExemplairesListe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbReceptionRevueImage)).EndInit();
-            this.FaireCommande.ResumeLayout(false);
+            this.tabCommande.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabGestion.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCommandeDocListe)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2673,7 +2687,7 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pcbReceptionExemplaireRevueImage;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.TabPage FaireCommande;
+        private System.Windows.Forms.TabPage tabCommande;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txbCommandeRevueRayon;
         private System.Windows.Forms.TextBox txbCommandeRevuePublic;
@@ -2719,23 +2733,24 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Button DocCalculer;
         private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabGestion;
         private System.Windows.Forms.TextBox DocNumCommande;
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCommandeDocListe;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRéglée1;
+        private System.Windows.Forms.Button btnLivrée1;
+        private System.Windows.Forms.Button btnAnnulé1;
+        private System.Windows.Forms.Button btnRelancé;
     }
 }
 

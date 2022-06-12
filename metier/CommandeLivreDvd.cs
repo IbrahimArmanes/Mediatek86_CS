@@ -11,7 +11,7 @@ namespace Mediatek86.metier
         private readonly int nbExemplaire;
         private readonly string idLivreDvd;
         private readonly int idStade;
-        public CommandeLivreDvd(int nbExemplaire, string idLivreDvd, string id, double montant, int idStade = 1):base (id, montant)
+        public CommandeLivreDvd(int nbExemplaire, string idLivreDvd, string id, double montant, DateTime dateCommande, int idStade = 1):base (id, montant, dateCommande)
         {
             this.nbExemplaire = nbExemplaire;
             this.idLivreDvd = idLivreDvd;

@@ -23,14 +23,17 @@ namespace Mediatek86.modele
         public static List<CommandeLivreDvd> GetAllCommandesLivreDvd()
         {
             List<CommandeLivreDvd> lesCommandes = new List<CommandeLivreDvd>();
-            string req = "Select * from CommandeDocument order by idLivreDvd";
+            string req = "SELECT commandedocument.id, nbExemplaire, idlivreDvd, idStade, dateCommande, montant FROM commandedocument , commande " +
+                "WHERE commandedocument.id=commande.id " +
+                "order by DateCommande";
+
 
             BddMySql curs = BddMySql.GetInstance(connectionString);
             curs.ReqSelect(req, null);
 
             while (curs.Read())
             {
-                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"), (string)curs.Field("idLivreDvd"), (string)curs.Field("id"), (double)curs.Field("montant"), (int)curs.Field("idStade") );
+                CommandeLivreDvd commande = new CommandeLivreDvd((int)curs.Field("nbExemplaire"), (string)curs.Field("idLivreDvd"), (string)curs.Field("id"), (double)curs.Field("montant"), (DateTime)curs.Field("dateCommande"), (int)curs.Field("idStade"));
                 lesCommandes.Add(commande);
             }
             curs.Close();

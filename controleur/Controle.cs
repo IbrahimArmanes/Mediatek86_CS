@@ -14,7 +14,7 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesRayons;
         private readonly List<Categorie> lesPublics;
         private readonly List<Categorie> lesGenres;
-
+        private readonly List<CommandeLivreDvd> lesCommandesLivreDvd;
         /// <summary>
         /// Ouverture de la fenêtre
         /// </summary>
@@ -26,8 +26,17 @@ namespace Mediatek86.controleur
             lesGenres = Dao.GetAllGenres();
             lesRayons = Dao.GetAllRayons();
             lesPublics = Dao.GetAllPublics();
+            lesCommandesLivreDvd = Dao.GetAllCommandesLivreDvd();
             FrmMediatek frmMediatek = new FrmMediatek(this);
             frmMediatek.ShowDialog();
+        }
+        /// <summary>
+        /// getter sur la liste des commandes de livres et dvd
+        /// </summary>
+        /// <returns>Collection d'objets CommandeLivreDvd</returns>
+        public List<CommandeLivreDvd> GetAllCommandesLivreDvd()
+        {
+            return lesCommandesLivreDvd;
         }
 
         /// <summary>

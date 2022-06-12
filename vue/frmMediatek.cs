@@ -16,6 +16,7 @@ namespace Mediatek86.vue
         private readonly Controle controle;
         const string ETATNEUF = "00001";
 
+        private readonly BindingSource bdgCommandeDocListe = new BindingSource();
         private readonly BindingSource bdgLivresListe = new BindingSource();
         private readonly BindingSource bdgDvdListe = new BindingSource();
         private readonly BindingSource bdgGenres = new BindingSource();
@@ -27,6 +28,8 @@ namespace Mediatek86.vue
         private List<Dvd> lesDvd = new List<Dvd>();
         private List<Revue> lesRevues = new List<Revue>();
         private List<Exemplaire> lesExemplaires = new List<Exemplaire>();
+        private List<CommandeLivreDvd> lesCommandesLivreDvd = new List<CommandeLivreDvd>();
+        DateTime localDate = DateTime.Now;
 
         #endregion
 
@@ -1278,13 +1281,25 @@ namespace Mediatek86.vue
 
         #endregion
 
-        #region Gestion des commandes
+        #region Nouvelle commande
         //-----------------------------------------------------------------------
-        // ONGLET "Gestion des commandes" 
+        // ONGLET "Nouvelle commande" 
         //-------------------------------------------------------------------------
 
-        //------------------- Fonctions utiles
-        
+        //------------------- COMMUN
+
+        /// <summary>
+        /// Ouverture de l'onglet nouvelle commande: 
+        /// Récupération de tout les documents de la BDD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabCommande_Enter(object sender, EventArgs e)
+        {
+            lesDvd = controle.GetAllDvd();
+            lesLivres = controle.GetAllLivres();
+            lesRevues = controle.GetAllRevues();
+        }
 
         //-------------------
 
@@ -1403,21 +1418,21 @@ namespace Mediatek86.vue
                 string titre = txbCommandeDocTitre.Text;
                 string nbreEx = DocNbreExemplaire.Text.ToString();
                 string prix = DocPrixTotal.Text.ToString();
-                string num = DocNumCommande.Text;
+                string numCommande = DocNumCommande.Text;
                 DialogResult dialogResult = MessageBox.Show("Êtes-vous sûr de vouloir commander : \n \n" +
                     nbreEx +
                     " exemplaires de l'oeuvre " +
                     titre +
                     "\n \nPrix total : " +
                     prix +
-                    "€", "Confirmer la commande : "+num, MessageBoxButtons.YesNo);
+                    "€", "Confirmer la commande : "+numCommande, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     int nbreExCommande = int.Parse(DocNbreExemplaire.Text);
                     double montantCommande = double.Parse(DocPrixTotal.Text);
                     string numSerie = txbCommandeDocNumero.Text;
 
-                    CommandeLivreDvd commande = new CommandeLivreDvd(nbreExCommande, numSerie, num, montantCommande);
+                    CommandeLivreDvd commande = new CommandeLivreDvd(nbreExCommande, numSerie, numCommande, montantCommande, localDate);
                     controle.CreerCommandeLivreDvd(commande);
                 }
                 else if (dialogResult == DialogResult.No)
@@ -1493,6 +1508,42 @@ namespace Mediatek86.vue
 
 
 
+
         #endregion
+
+        #region Gestion des commandes
+        //-----------------------------------------------------------------------
+        // ONGLET "Gestion des commandes" 
+        //-------------------------------------------------------------------------
+
+        private void tabGestion_Enter(object sender, EventArgs e)
+        {
+            lesCommandesLivreDvd = controle.GetAllCommandesLivreDvd();
+            btnRelancé.Enabled = false;
+            btnAnnulé1.Enabled = false;
+            btnLivrée1.Enabled = false;
+            btnRéglée1.Enabled = false;
+            RemplirCommandeListe(lesCommandesLivreDvd);
+        }
+
+        /// <summary>
+        /// Remplit le datagrid avec la liste reçue en paramètre
+        /// </summary>
+        private void RemplirCommandeListe(List<CommandeLivreDvd> commande)
+        {
+            bdgCommandeDocListe.DataSource = commande;
+            dgvCommandeDocListe.DataSource = bdgCommandeDocListe;
+
+
+            dgvCommandeDocListe.Columns["id"].DisplayIndex = 0;
+            dgvCommandeDocListe.Columns["idLivreDvd"].DisplayIndex = 1;
+            dgvCommandeDocListe.Columns["Montant"].DisplayIndex= 2;
+            dgvCommandeDocListe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            //dgvLivresListe.Columns["id"].DisplayIndex = 0;
+            //dgvLivresListe.Columns["titre"].DisplayIndex = 1;
+        }
+        #endregion
+
     }
 }
