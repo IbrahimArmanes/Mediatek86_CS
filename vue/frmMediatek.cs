@@ -1447,68 +1447,6 @@ namespace Mediatek86.vue
 
 
 
-        //Gestion des commandes de revues
-        //--------------------------------------------
-        private void AfficheCommandeRevueInfos(Revue revue)
-        {
-            // informations sur la revue
-            txbCommandeRevueTitre.Text = revue.Titre;
-            txbCommandeRevuePeriodicite.Text = revue.Periodicite;
-            txbCommandeRevueNumero.Text = revue.Id;
-            txbCommandeRevueGenre.Text = revue.Genre;
-            txbCommandeRevuePublic.Text = revue.Public;
-            txbCommandeRevueRayon.Text = revue.Rayon;
-        }
-
-        /// <summary>
-        /// Vide les zones d'affchage des informations de la revue
-        /// </summary>
-        private void VideCommandeRevueInfos()
-        {
-            txbCommandeRevueTitre.Text = "";
-            txbCommandeRevuePeriodicite.Text = "";
-            txbCommandeRevueNumero.Text = "";
-            txbCommandeRevueGenre.Text = "";
-            txbCommandeRevuePublic.Text = "";
-            txbCommandeRevueRayon.Text = "";
-        }
-
-        /// <summary>
-        /// Recherche d'un numéro de revue et affiche ses informations
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnRechercherRevue_Click(object sender, EventArgs e)
-        {
-            if (!txbCommandeRevueNumero.Text.Equals(""))
-            {
-                Revue revue = lesRevues.Find(x => x.Id.Equals(txbCommandeRevueNumero.Text));
-                if (revue != null)
-                {
-                    AfficheCommandeRevueInfos(revue);
-                }
-                else
-                {
-                    MessageBox.Show("numéro introuvable");
-                    VideCommandeRevueInfos();
-                }
-            }
-            else
-            {
-                VideCommandeRevueInfos();
-            }
-
-        }
-
-
-
-
-
-
-
-
-
-
 
         #endregion
 
