@@ -9,10 +9,10 @@ namespace Mediatek86.modele
     public static class Dao
     {
 
-        private static readonly string server = "bts-exam-ih.go.yj.fr";
-        private static readonly string userid = "Armanes";
-        private static readonly string password = "Shurke15";
-        private static readonly string database = "peubvrdh_mediatek86";
+        private static readonly string server = "localhost";
+        private static readonly string userid = "root";
+        private static readonly string password = "";
+        private static readonly string database = "mediatek86";
         private static readonly string connectionString = "server="+server+";user id="+userid+";password="+password+";database="+database+";SslMode=none";
 
 
