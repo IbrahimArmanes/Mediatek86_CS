@@ -25,7 +25,7 @@ namespace Mediatek86.modele
             List<CommandeLivreDvd> lesCommandes = new List<CommandeLivreDvd>();
             string req = "SELECT commandedocument.id, nbExemplaire, idlivreDvd, idStade, dateCommande, montant FROM commandedocument , commande " +
                 "WHERE commandedocument.id=commande.id " +
-                "order by DateCommande";
+                "order by DateCommande DESC";
 
 
             BddMySql curs = BddMySql.GetInstance(connectionString);
@@ -79,7 +79,31 @@ namespace Mediatek86.modele
                 return false;
             }
         }
+        /// <summary>
+        /// Modifie le stade d'une commande
+        /// </summary>
+        /// <returns>true si la modification a pu se faire</returns>
+        public static bool ModificationStadeCommande(CommandeLivreDvd commande, int stade)
+        {
+            try
+            {
+                string req = "update commandedocument SET idStade = @stade WHERE id = @id";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@stade", stade },
+                    { "@id", commande.Id }
+                };
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqUpdate(req, parameters);
+                curs.Close();
 
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
         /// <summary>

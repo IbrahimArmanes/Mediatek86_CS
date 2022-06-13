@@ -1440,6 +1440,7 @@ namespace Mediatek86.vue
                     //do something else
                 }
             }
+            RemplirCommandeListe(lesCommandesLivreDvd);
         }
 
             
@@ -1539,11 +1540,124 @@ namespace Mediatek86.vue
             dgvCommandeDocListe.Columns["idLivreDvd"].DisplayIndex = 1;
             dgvCommandeDocListe.Columns["Montant"].DisplayIndex= 2;
             dgvCommandeDocListe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            //dgvLivresListe.Columns["id"].DisplayIndex = 0;
-            //dgvLivresListe.Columns["titre"].DisplayIndex = 1;
         }
+        /// <summary>
+        /// Affichage des informations de la commande sélectionnée
+        /// </summary>
+        /// <param name="commande"></param>
+        private void AfficheCommandeInfos(CommandeLivreDvd commande)
+        {
+            txbNuméroCommande.Text = commande.Id;
+            txbDateCommande.Text = commande.DateCommande.ToString().Split()[0];
+            txbMontantCommande.Text = commande.Montant.ToString();
+            var stades = new List<string> { "En cours", "Livrée", "Réglée", "Relancée", "Annulée" };
+            txbStadeCommande.Text = stades[commande.IdStade - 1];
+            if(commande.IdStade == 1 || commande.IdStade == 4)
+            {
+                btnRelancé.Enabled = true;
+                btnAnnulé1.Enabled = true;
+                btnLivrée1.Enabled = true;
+                btnRéglée1.Enabled = false;
+            }
+            if (commande.IdStade == 2)
+            {
+                btnRelancé.Enabled = false;
+                btnAnnulé1.Enabled = false;
+                btnLivrée1.Enabled = false;
+                btnRéglée1.Enabled = true;
+            }
+            if (commande.IdStade == 3 || commande.IdStade == 5)
+            {
+                btnRelancé.Enabled = false;
+                btnAnnulé1.Enabled = false;
+                btnLivrée1.Enabled = false;
+                btnRéglée1.Enabled = false;
+            }
+
+        }
+
+        /// <summary>
+        /// Vide les zones d'affichage des informations du livre
+        /// </summary>
+        private void VideCommandeInfos()
+        {
+            txbNuméroCommande.Text = "";
+            txbDateCommande.Text = "";
+            txbMontantCommande.Text = "";
+            txbStadeCommande.Text = "";
+        }
+        private void DgvCommandesListe_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvCommandeDocListe.CurrentCell != null)
+            {
+                try
+                {
+                    CommandeLivreDvd commande = (CommandeLivreDvd)bdgCommandeDocListe.List[bdgCommandeDocListe.Position];
+                    AfficheCommandeInfos(commande);
+
+                }
+                catch
+                {
+                    VideCommandeInfos();
+                }
+            }
+            else
+            {
+                VideCommandeInfos();
+            }
+        }
+        private void LivrerCommande(CommandeLivreDvd commande)
+        {
+            controle.ModificationStadeCommande(commande, 2);
+        }
+        private void RéglerCommande(CommandeLivreDvd commande)
+        {
+            controle.ModificationStadeCommande(commande, 3);
+        }
+        private void RelancerCommande(CommandeLivreDvd commande)
+        {
+            controle.ModificationStadeCommande(commande, 4);
+        }
+        private void AnnulerCommande(CommandeLivreDvd commande)
+        {
+            controle.ModificationStadeCommande(commande, 5);
+        }
+
+        private void btnRelancé_Click(object sender, EventArgs e)
+        {
+            CommandeLivreDvd commande = (CommandeLivreDvd)bdgCommandeDocListe.List[bdgCommandeDocListe.Position];
+            RelancerCommande(commande);
+            lesCommandesLivreDvd = controle.GetAllCommandesLivreDvd();
+            RemplirCommandeListe(lesCommandesLivreDvd);
+        }
+
+        private void btnAnnulé1_Click(object sender, EventArgs e)
+        {
+            CommandeLivreDvd commande = (CommandeLivreDvd)bdgCommandeDocListe.List[bdgCommandeDocListe.Position];
+            AnnulerCommande(commande);
+            lesCommandesLivreDvd = controle.GetAllCommandesLivreDvd();
+            RemplirCommandeListe(lesCommandesLivreDvd);
+        }
+
+        private void btnLivrée1_Click(object sender, EventArgs e)
+        {
+            CommandeLivreDvd commande = (CommandeLivreDvd)bdgCommandeDocListe.List[bdgCommandeDocListe.Position];
+            LivrerCommande(commande);
+            lesCommandesLivreDvd = controle.GetAllCommandesLivreDvd();
+            RemplirCommandeListe(lesCommandesLivreDvd);
+        }
+
+        private void btnRéglée1_Click(object sender, EventArgs e)
+        {
+            CommandeLivreDvd commande = (CommandeLivreDvd)bdgCommandeDocListe.List[bdgCommandeDocListe.Position];
+            RéglerCommande(commande);
+            lesCommandesLivreDvd = controle.GetAllCommandesLivreDvd();
+            RemplirCommandeListe(lesCommandesLivreDvd);
+        }
+
+
         #endregion
 
+       
     }
 }

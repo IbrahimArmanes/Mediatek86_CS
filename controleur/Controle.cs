@@ -14,7 +14,7 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesRayons;
         private readonly List<Categorie> lesPublics;
         private readonly List<Categorie> lesGenres;
-        private readonly List<CommandeLivreDvd> lesCommandesLivreDvd;
+        private List<CommandeLivreDvd> lesCommandesLivreDvd;
         /// <summary>
         /// Ouverture de la fenêtre
         /// </summary>
@@ -36,6 +36,7 @@ namespace Mediatek86.controleur
         /// <returns>Collection d'objets CommandeLivreDvd</returns>
         public List<CommandeLivreDvd> GetAllCommandesLivreDvd()
         {
+            lesCommandesLivreDvd = Dao.GetAllCommandesLivreDvd();
             return lesCommandesLivreDvd;
         }
 
@@ -114,6 +115,10 @@ namespace Mediatek86.controleur
         public bool CreerCommandeLivreDvd(CommandeLivreDvd commande)
         {
             return Dao.CreerCommandeLivreDvd(commande);
+        }
+        public bool ModificationStadeCommande(CommandeLivreDvd commande, int stade)
+        {
+            return Dao.ModificationStadeCommande(commande, stade);
         }
     }
 

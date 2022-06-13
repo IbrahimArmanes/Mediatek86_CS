@@ -231,14 +231,14 @@ namespace Mediatek86.vue
             this.btnRéglée1 = new System.Windows.Forms.Button();
             this.btnLivrée1 = new System.Windows.Forms.Button();
             this.btnAnnulé1 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txbStadeCommande = new System.Windows.Forms.TextBox();
             this.label82 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbDateCommande = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txbMontantCommande = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbNuméroCommande = new System.Windows.Forms.TextBox();
             this.label78 = new System.Windows.Forms.Label();
             this.dgvCommandeDocListe = new System.Windows.Forms.DataGridView();
             this.tabOngletsApplication.SuspendLayout();
@@ -2334,14 +2334,14 @@ namespace Mediatek86.vue
             this.groupBox3.Controls.Add(this.btnRéglée1);
             this.groupBox3.Controls.Add(this.btnLivrée1);
             this.groupBox3.Controls.Add(this.btnAnnulé1);
-            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Controls.Add(this.txbStadeCommande);
             this.groupBox3.Controls.Add(this.label82);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.txbDateCommande);
             this.groupBox3.Controls.Add(this.label81);
             this.groupBox3.Controls.Add(this.label80);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.txbMontantCommande);
             this.groupBox3.Controls.Add(this.label79);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txbNuméroCommande);
             this.groupBox3.Controls.Add(this.label78);
             this.groupBox3.Controls.Add(this.dgvCommandeDocListe);
             this.groupBox3.Location = new System.Drawing.Point(9, 14);
@@ -2360,6 +2360,7 @@ namespace Mediatek86.vue
             this.btnRelancé.TabIndex = 73;
             this.btnRelancé.Text = "Relancer la commande";
             this.btnRelancé.UseVisualStyleBackColor = false;
+            this.btnRelancé.Click += new System.EventHandler(this.btnRelancé_Click);
             // 
             // btnRéglée1
             // 
@@ -2369,6 +2370,7 @@ namespace Mediatek86.vue
             this.btnRéglée1.TabIndex = 72;
             this.btnRéglée1.Text = "Commande réglée";
             this.btnRéglée1.UseVisualStyleBackColor = true;
+            this.btnRéglée1.Click += new System.EventHandler(this.btnRéglée1_Click);
             // 
             // btnLivrée1
             // 
@@ -2378,6 +2380,7 @@ namespace Mediatek86.vue
             this.btnLivrée1.TabIndex = 71;
             this.btnLivrée1.Text = "Commande livrée";
             this.btnLivrée1.UseVisualStyleBackColor = true;
+            this.btnLivrée1.Click += new System.EventHandler(this.btnLivrée1_Click);
             // 
             // btnAnnulé1
             // 
@@ -2387,14 +2390,15 @@ namespace Mediatek86.vue
             this.btnAnnulé1.TabIndex = 70;
             this.btnAnnulé1.Text = "Annuler la commande";
             this.btnAnnulé1.UseVisualStyleBackColor = true;
+            this.btnAnnulé1.Click += new System.EventHandler(this.btnAnnulé1_Click);
             // 
-            // textBox7
+            // txbStadeCommande
             // 
-            this.textBox7.Location = new System.Drawing.Point(449, 256);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(68, 20);
-            this.textBox7.TabIndex = 69;
+            this.txbStadeCommande.Location = new System.Drawing.Point(449, 256);
+            this.txbStadeCommande.Name = "txbStadeCommande";
+            this.txbStadeCommande.ReadOnly = true;
+            this.txbStadeCommande.Size = new System.Drawing.Size(68, 20);
+            this.txbStadeCommande.TabIndex = 69;
             // 
             // label82
             // 
@@ -2406,13 +2410,13 @@ namespace Mediatek86.vue
             this.label82.TabIndex = 68;
             this.label82.Text = "Stade de la commande :";
             // 
-            // textBox2
+            // txbDateCommande
             // 
-            this.textBox2.Location = new System.Drawing.Point(157, 276);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 67;
+            this.txbDateCommande.Location = new System.Drawing.Point(157, 276);
+            this.txbDateCommande.Name = "txbDateCommande";
+            this.txbDateCommande.ReadOnly = true;
+            this.txbDateCommande.Size = new System.Drawing.Size(100, 20);
+            this.txbDateCommande.TabIndex = 67;
             // 
             // label81
             // 
@@ -2433,13 +2437,13 @@ namespace Mediatek86.vue
             this.label80.TabIndex = 65;
             this.label80.Text = "€";
             // 
-            // textBox3
+            // txbMontantCommande
             // 
-            this.textBox3.Location = new System.Drawing.Point(157, 301);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(45, 20);
-            this.textBox3.TabIndex = 64;
+            this.txbMontantCommande.Location = new System.Drawing.Point(157, 301);
+            this.txbMontantCommande.Name = "txbMontantCommande";
+            this.txbMontantCommande.ReadOnly = true;
+            this.txbMontantCommande.Size = new System.Drawing.Size(45, 20);
+            this.txbMontantCommande.TabIndex = 64;
             // 
             // label79
             // 
@@ -2451,13 +2455,13 @@ namespace Mediatek86.vue
             this.label79.TabIndex = 27;
             this.label79.Text = "Montant :";
             // 
-            // textBox1
+            // txbNuméroCommande
             // 
-            this.textBox1.Location = new System.Drawing.Point(157, 253);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 26;
+            this.txbNuméroCommande.Location = new System.Drawing.Point(157, 253);
+            this.txbNuméroCommande.Name = "txbNuméroCommande";
+            this.txbNuméroCommande.ReadOnly = true;
+            this.txbNuméroCommande.Size = new System.Drawing.Size(100, 20);
+            this.txbNuméroCommande.TabIndex = 26;
             // 
             // label78
             // 
@@ -2484,6 +2488,7 @@ namespace Mediatek86.vue
             this.dgvCommandeDocListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCommandeDocListe.Size = new System.Drawing.Size(844, 228);
             this.dgvCommandeDocListe.TabIndex = 5;
+            this.dgvCommandeDocListe.SelectionChanged += new System.EventHandler(this.DgvCommandesListe_SelectionChanged);
             // 
             // FrmMediatek
             // 
@@ -2738,15 +2743,15 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label79;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbNuméroCommande;
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.DataGridView dgvCommandeDocListe;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txbStadeCommande;
         private System.Windows.Forms.Label label82;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbDateCommande;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txbMontantCommande;
         private System.Windows.Forms.Button btnRéglée1;
         private System.Windows.Forms.Button btnLivrée1;
         private System.Windows.Forms.Button btnAnnulé1;
